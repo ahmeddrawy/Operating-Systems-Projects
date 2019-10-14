@@ -5,7 +5,7 @@ import java.util.Vector;
 public class MyParser {
     String[] args; // Will be filled by arguments extracted by parse method
     String cmd; //
-    Vector<String> ListOfCommands;
+
     public MyParser(){
         cmd = null ;
     }
