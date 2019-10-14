@@ -1,7 +1,5 @@
 package com.company;
 
-import java.sql.Time;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Scanner;
 /** todo help function for every command - take care of commands with no class
@@ -17,16 +15,16 @@ public class Terminal {
         terminalParser = new MyParser();
         CurrentPath = HomePath;
         while (true)
-        PromoptForCommands();
+        PromptForCommands();
 
     }
     Terminal(String path){
         CurrentPath = path  ;
         while(true)
-            PromoptForCommands();
+            PromptForCommands();
 
     }
-    private void PromoptForCommands(){
+    private void PromptForCommands(){
         if(CurrentPath == null || CurrentPath.compareTo(HomePath) ==0)
             System.out.print("Hanfy'sPC:~$ ");
         else

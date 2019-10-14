@@ -15,6 +15,7 @@ public class CatCommand extends Command {
         return ((FileExist(args[0]) || FileExist(mPath +'/' + args[0]))) && args.length ==1;
     }
     protected void run(String path) {
+        mPath = toAbsolutePath(path);
         if (check()){
             try (BufferedReader br = new BufferedReader(new FileReader(fileToProcess()))) {
                 String line = null;
@@ -41,5 +42,7 @@ public class CatCommand extends Command {
             return args[0];
         return mPath +'/' + args[0];
     }
+    public void ShowArguments(){/// todo
 
+    }
 }

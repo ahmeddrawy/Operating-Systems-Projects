@@ -8,17 +8,13 @@ import java.nio.file.Paths;
 public abstract class Command {
     String []args ;
     String mPath;
+    Path myPath ;
+    Path TerminalPath ;
 
-    String toAbsolutePath(String p){
-        Path path = Paths.get(p);
-        if(!path.toFile().isAbsolute()) {
-            path = Paths.get(mPath + File.separatorChar + p);
-        }
-        return path.normalize().toAbsolutePath().toString();
-    }
 
     protected abstract boolean check();
     protected abstract void run(String path);
+    protected abstract void ShowArguments();
     protected boolean FileExist(String path){
         File tmpFile = new File(path);
         return tmpFile.exists() && tmpFile.isFile();
@@ -27,5 +23,15 @@ public abstract class Command {
         File tmpFile = new File(path);
         return tmpFile.exists() && tmpFile.isDirectory();
     }
+    protected boolean DirectoryExist(Path _path){  ///
+       return _path.toFile().exists()&& _path.toFile().isDirectory();
+    }
 
+    String toAbsolutePath(String _path){
+        Path path = Paths.get(_path);
+        if(!path.toFile().isAbsolute()) {
+            path = Paths.get(mPath + File.separatorChar + _path);
+        }
+        return path.normalize().toAbsolutePath().toString();
+    }
 }
