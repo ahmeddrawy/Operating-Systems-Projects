@@ -9,7 +9,7 @@ public class MyParser {
     public MyParser(){
         cmd = null ;
     }
-    public boolean parse (String input){
+    public boolean parse (String input){/// todo chech if command exist
         if(input == null)
             return false ; /// todo check when we return false from parsing
         String [] res  = input.split(" ");

@@ -18,10 +18,15 @@ public class lsCommand extends Command {
         return args.length == 0;
     }
     protected  void run(String path){   /// todo
-        File f = new File(path);
-        ArrayList<String> names = new ArrayList<String>(Arrays.asList(f.list()));
-        for (String s:names) {
-            System.out.println(s);
+        if(check()) {
+            File f = new File(path);
+            ArrayList<String> names = new ArrayList<String>(Arrays.asList(f.list()));
+            for (String s : names) {
+                System.out.println(s);
+            }
+        }
+        else {
+            System.out.println("Too much arguments");
         }
     }
     public void ShowArguments(){ ///todo

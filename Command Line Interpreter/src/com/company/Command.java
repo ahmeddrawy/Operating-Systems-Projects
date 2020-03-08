@@ -30,7 +30,7 @@ public abstract class Command {
     String toAbsolutePath(String _path){
         Path path = Paths.get(_path);
         if(!path.toFile().isAbsolute()) {
-            path = Paths.get(mPath + File.separatorChar + _path);
+            path = Paths.get(TerminalPath.toString() + File.separatorChar + _path);
         }
         return path.normalize().toAbsolutePath().toString();
     }

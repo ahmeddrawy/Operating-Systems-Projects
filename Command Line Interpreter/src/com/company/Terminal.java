@@ -1,8 +1,11 @@
 package com.company;
 
+import java.nio.file.Paths;
 import java.util.Date;
 import java.util.Scanner;
 /** todo help function for every command - take care of commands with no class
+ *  todo operator | < >
+ *  todo args ,  rm ,more
  *
   */
 
@@ -53,11 +56,16 @@ public class Terminal {
         }
         else if(cmd.compareTo("date") == 0){
             Date d = new Date();
-            System.out.println(d);
+            System.out.println  (d);
+        }
+        else if(cmd.compareTo("mkdir") ==0 ){
+            mkdirCommand c  = new mkdirCommand(Paths.get(CurrentPath) ,terminalParser.args );
+            c.run(CurrentPath);
         }
         else if(cmd.compareTo("exit") == 0){
            System.exit(1);
         }
+
         else {
             System.out.println(terminalParser.cmd +" command not found ");
 

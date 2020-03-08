@@ -36,7 +36,7 @@ public class CatCommand extends Command {
         }
 
     }
-    String fileToProcess(){
+    String fileToProcess(){ /// we checked the file name before , so we have 2 cases short or complete path
 
         if(FileExist(args[0]))
             return args[0];

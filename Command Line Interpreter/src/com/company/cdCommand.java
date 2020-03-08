@@ -1,4 +1,6 @@
 package com.company;
+import org.jetbrains.annotations.NotNull;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -8,14 +10,14 @@ import java.nio.file.Paths;
  */
 public class cdCommand extends Command {
 
-    cdCommand(String [] _args , String _path){
+    cdCommand(@NotNull String [] _args , String _path){
         args = new String[_args.length];
         for (int i = 0 ; i <args.length ; ++i )
             args[i] = _args[i];
         TerminalPath  = Paths.get(_path);
         myPath  = Paths.get(_path);
     }
-    cdCommand(String [] _args , Path _path){
+    cdCommand(@NotNull String [] _args , Path _path){
         args = new String[_args.length];
         for (int i = 0 ; i <args.length ; ++i )
             args[i] = _args[i];
@@ -30,8 +32,10 @@ public class cdCommand extends Command {
     public void run(String _path){ /// todo redundant path
         args[0] = toAbsolutePath(args[0]);
         myPath  = Paths.get(args[0]);
-        if(!check()){   /// if error return my path to the terminal path
-            myPath =   TerminalPath;
+        TerminalPath = Paths.get(_path);
+        if(!check()){///todo cout warning
+            /// if error return my path to the terminal path
+            myPath =  TerminalPath;
         }
 
 //            if(p.toFile().isDirectory()){
@@ -44,8 +48,9 @@ public class cdCommand extends Command {
         return;
     }
     public String changeDirectory(){
-        this.run(mPath);
-        return this.mPath;
+        this.run(TerminalPath.toString());
+//        return this.mPath;
+        return myPath.toString();
     }
     public void ShowArguments(){/// todo
 
